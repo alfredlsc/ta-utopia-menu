@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome to TA UTOPIA BAR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="images/logo.png" alt="TA UTOPIA Logo" class="logo">
+      <div>
+        <h1>Welcome to <span>TA UTOPIA Bar 她的乌托邦</span></h1>
+        <p class="tagline">Love · Music · Drinks · Friends</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div id="points-display">TA POINTS: 0</div>
+      <button id="account-btn" class="account-btn">Sign In</button>
+      <button id="cart-btn" aria-label="Open cart"> 🛒 <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="menu">
+      <h2>Signature Cocktails</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-name="Bloody Moon" data-price="28">
+          <img src="images/bloodymoon.jpg" alt="Bloody Moon">
+          <h3>Bloody Moon</h3>
+          <p>Vodka · Cranberry · Lime</p>
+          <span class="price">RM 28</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-name="Passion Storm" data-price="30">
+          <img src="images/passionstorm.jpg" alt="Passion Storm">
+          <h3>Passion Storm</h3>
+          <p>Rum · Passionfruit · Mint</p>
+          <span class="price">RM 30</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <h2>Mocktails</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-name="Summer Breeze" data-price="22">
+          <img src="images/summerbreeze.jpg" alt="Summer Breeze">
+          <h3>Summer Breeze</h3>
+          <p>Lemon · Peach · Soda</p>
+          <span class="price">RM 22</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-name="Coco Dream" data-price="24">
+          <img src="images/cocodream.jpg" alt="Coco Dream">
+          <h3>Coco Dream</h3>
+          <p>Coconut · Pineapple · Cream</p>
+          <span class="price">RM 24</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+
+      <h2>Snacks</h2>
+      <div class="menu-grid">
+        <div class="menu-item" data-name="Truffle Fries" data-price="18">
+          <img src="images/trufflefries.jpg" alt="Truffle Fries">
+          <h3>Truffle Fries</h3>
+          <p>Crispy fries with truffle oil</p>
+          <span class="price">RM 18</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-name="Cheese Platter" data-price="35">
+          <img src="images/cheeseplatter.jpg" alt="Cheese Platter">
+          <h3>Cheese Platter</h3>
+          <p>Assorted cheese & fruits</p>
+          <span class="price">RM 35</span>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart sidebar（保留一个完整版） -->
+  <aside id="cart-sidebar" class="cart-hidden">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart">✕</button>
+    </div>
+
+    <!-- 购物车商品列表 -->
+    <div id="cart-items" class="cart-items">
+      <!-- items injected by JS -->
+    </div>
+
+    <!-- 会员可用积分与使用积分（登录后显示） -->
+    <div id="redeem-area" class="redeem-area" style="display:none;">
+      <div class="redeem-row">
+        <div>Available Points</div>
+        <div id="available-points">0</div>
+      </div>
+      <div class="redeem-row">
+        <div>Use Points</div>
+        <input id="use-points" type="number" min="0" value="0" />
+      </div>
+      <p class="redeem-note">10 points = RM1 off (max up to subtotal)</p>
+    </div>
+
+    <!-- 购物车底部汇总与下单 -->
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div>Subtotal</div>
+        <div id="cart-subtotal">RM 0</div>
+      </div>
+
+      <div class="cart-summary" id="discount-row" style="display:none;">
+        <div>Discount (Points)</div>
+        <div id="cart-discount">RM 0</div>
+      </div>
+
+      <div class="cart-summary">
+        <div>TA POINTS (this order)</div>
+        <div id="cart-points">0</div>
+      </div>
+
+      <!-- 顾客资料 -->
+      <div class="customer-fields">
+        <input id="cust-name" type="text" placeholder="Your Name" />
+        <input id="cust-phone" type="tel" placeholder="Your Phone" />
+      </div>
+      <p id="remember-tip" class="remember-tip">💡 Your info will be remembered for next time.</p>
+
+      <button id="whatsapp-order" class="order-btn">Order via WhatsApp</button>
+      <button id="clear-cart" class="clear-btn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <p>© 2025 TA UTOPIA BAR</p>
+  </footer>
+
+  <!-- Account Modal（登录弹窗，会员功能需要） -->
+  <div id="account-modal" class="account-modal" style="display:none;">
+    <div class="account-card">
+      <h3 id="account-title">Sign In</h3>
+      <label class="field">
+        <span>Your Name</span>
+        <input id="acc-name" type="text" placeholder="e.g. Alice" />
+      </label>
+      <label class="field">
+        <span>Phone (login ID)</span>
+        <input id="acc-phone" type="tel" placeholder="e.g. 016-xxxxxxx" />
+      </label>
+      <div class="account-actions">
+        <button id="account-save" class="order-btn">Save & Sign In</button>
+        <button id="account-cancel" class="clear-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

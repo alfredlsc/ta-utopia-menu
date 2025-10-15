@@ -1,0 +1,2 @@
+如果要换 thank you 到
+ <div class="cart-footer"> 换
